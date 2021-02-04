@@ -16,7 +16,7 @@ class Category(models.Model):
 
 class Member(models.Model):
     member_id = models.AutoField('Member ID', primary_key=True)
-    name = models.CharField('TITLE' ,max_length=10)
+    name = models.CharField('NAME' ,max_length=10)
     def __str__(self):
         return self.name    
 
