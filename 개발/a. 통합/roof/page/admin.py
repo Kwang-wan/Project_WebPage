@@ -15,10 +15,12 @@ class MemberAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('post_id', 'title', 'content', 'photo_id','date','category_title','member_id','tag_id')
-    '''
-    list_display = ('post_id', 'title', 'content', 'photo_id1', 'photo_id2', 'photo_id3','photo_id4','photo_id5','photo_id6','photo_id7','photo_id8','photo_id9','photo_id10','date','category_title','member_id','tag_id1','tag_id2','tag_id3','tag_id4','tag_id5')
-    '''
+    list_display = ('post_id', 'title', 'content', 'photo_list','date','category_title','member_id','tag_list')
+    def photo_list(self, obj):
+        return ', '.join(o for o in obj.title.all())
+    def tag_list(self, obj):
+        return ', '.join(o for o in obj.title.all())    
+
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
