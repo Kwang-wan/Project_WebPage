@@ -15,7 +15,7 @@ class Category(models.Model):
         return self.title    
 
 class Member(models.Model):
-    member_id = models.AutoField('Category ID', primary_key=True)
+    member_id = models.AutoField('Member ID', primary_key=True)
     name = models.CharField('TITLE' ,max_length=10)
     def __str__(self):
         return self.name    
@@ -37,7 +37,7 @@ class Photo(models.Model):
     title = models.CharField('TITLE' ,max_length=25)
     source = models.CharField('Image Source' ,max_length=200)
     member_id = models.ForeignKey('Member', on_delete=models.CASCADE)
-    post_id = models.ForeignKey('Post',on_delete=models.CASCADE)
+    post_id = models.ForeignKey('Post',on_delete=models.CASCADE, null=True, blank=True)
     content = models.TextField('CONTENT', null=True, blank=True)
     def __str__(self):
         return self.title
