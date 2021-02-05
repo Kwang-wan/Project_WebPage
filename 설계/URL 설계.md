@@ -6,7 +6,7 @@
 | /page/                                           | ~~//PageTV(TemplateView)//~~ |                           |
 | /page/yonghyun/                                  | PageLV(ListView)             | member_list.html          |
 | /page/yonghyun/game/                             | PageCaLV(ListView)           | member_category_list.html |
-| /page/yonghyun/game/game-title/                  | PageDV(DetailView)           | member_post_detai.html    |
+| /page/yonghyun/game/game-title/                  | PageDV(DetailView)           | member_post_detail.html   |
 | /page/yonghyun/game/game-title/game-photo-title/ | PagePhotoDV(DetailView)      | member_photo_detail.html  |
 | /tag/                                            | ~~//TagTV(TemplateView)//~~  |                           |
 | /tag/supermario/                                 | TagLV(ListView)              | tag_list.html             |
