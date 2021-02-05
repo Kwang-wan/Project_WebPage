@@ -11,7 +11,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ('member_id', 'name')
+    list_display = ('member_id', 'name', 'category_list')
+    def category_list(self, obj):
+        return ', '.join(o for o in obj.name.all())    
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

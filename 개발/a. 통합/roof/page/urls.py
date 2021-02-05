@@ -1,6 +1,8 @@
 from django.urls import re_path
 from page import views
 
+
+
 app_name = 'page'
 urlpatterns = [
 
