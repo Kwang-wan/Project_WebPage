@@ -13,15 +13,15 @@ class CategoryAdmin(admin.ModelAdmin):
 class MemberAdmin(admin.ModelAdmin):
     list_display = ('member_id', 'name', 'category_list')
     def category_list(self, obj):
-        return ', '.join(o for o in obj.name.all())    
+        return ', '.join(o.title for o in obj.category_id.all())    
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('post_id', 'title', 'content', 'photo_list','date','category_title','member_id','tag_list')
     def photo_list(self, obj):
-        return ', '.join(o for o in obj.title.all())
+        return ', '.join(o.title for o in obj.photo_id.all())
     def tag_list(self, obj):
-        return ', '.join(o for o in obj.title.all())    
+        return ', '.join(o.title for o in obj.tag_id.all())    
 
 
 @admin.register(Photo)
