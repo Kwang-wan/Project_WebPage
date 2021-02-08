@@ -26,6 +26,6 @@ urlpatterns = [
     re_path(r'^(?P<category>[-\w]+)/$', views.CaLV.as_view(), name='category_list'),
 
     # /page/search/
-    path(r'^(?P<search>[-\w]+)/$', views.SearchFormView.as_view(), name='search'),
+    re_path(r'^(?P<search>[-\w]+)/$', views.SearchFormView.as_view(), name='search'),
 ]
 
