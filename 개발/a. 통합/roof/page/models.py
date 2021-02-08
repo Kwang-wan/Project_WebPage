@@ -20,7 +20,7 @@ class Member(models.Model):
     member_id = models.AutoField('Member ID', primary_key=True)
     name = models.CharField('NAME' ,max_length=10)
     slug = models.SlugField('SLUG', unique=True, allow_unicode=True, help_text='one word for title alias.')    
-    category_id = models.ManyToManyField('Category')
+    category_id = models.ManyToManyField('Category', null=True, blank=True)
     def __str__(self):
         return self.name  
 
