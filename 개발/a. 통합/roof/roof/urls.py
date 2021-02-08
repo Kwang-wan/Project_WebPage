@@ -20,7 +20,6 @@ from roof.views import HomeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
     path('', HomeView.as_view(), name='home'),
     path('page/', include('page.urls')),
 ]

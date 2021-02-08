@@ -1,0 +1,202 @@
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+  {% block extra-style %}{% endblock extra-style %}
+<style>
+  /* 사이드바 래퍼 스타일 */
+  
+  #page-wrapper {
+    padding-left: 250px;
+  }
+  
+  #sidebar-wrapper {
+    position: fixed;
+    width: 200px;
+    height: 90%;
+    margin-left: -250px;
+    background: #000;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  #page-content-wrapper {
+    width: 100%;
+    padding: 20px;
+  }
+  /* 사이드바 스타일 */
+  
+  .sidebar-nav {
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .sidebar-nav li {
+    text-indent: 1.5em;
+    line-height: 2.8em;
+  }
+  
+  .sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999;
+  }
+  
+  .sidebar-nav li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .sidebar-nav > .sidebar-brand {
+    font-size: 1.3em;
+    line-height: 3em;
+  }
+
+</style>
+
+<div id="page-wrapper">
+  <!-- 사이드바 -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#"></a>
+      </li>
+      <li><a href="#">광완</a></li>
+      <li><a href="#">승은 </a></li>
+      <li><a href="#">용현 </a></li>
+      <li><a href="#">혜빈 </a></li>
+    </ul>
+  </div>
+  <!-- /사이드바 -->
+
+<script>
+function myTrim(x) {
+    return x.replace(/^\s+|\s+$/gm,'');
+}
+
+function search_json() {
+    var kw = myTrim($("#kw").val());
+    if(!kw) {
+        return;
+    }
+
+    $.post("/book/search.json", {
+        "keyword": kw
+
+    }, function (json) {
+        if (json.success) {
+            location.href = "/book/search/result/1";
+        }
+
+    }, "json");
+}
+
+$(document).ready(function () {
+    $(".book-search").on("click", function() {
+        $("#search_form").submit();
+    });
+
+    $("#mobile_search_btn").on("click", function() {
+        search_json();
+    });
+
+    $('#kw').keyup(function(e) {
+        if (e.keyCode == 13) {
+            search_json();
+        }
+    });
+
+    $(".home").on("click", function() {
+        location.href = "/";
+    });
+
+    if (typeof(Storage) !== "undefined") {
+        if(localStorage.sidebar == "hidden") {
+            menuToggle();
+        }else {
+            $(".sidebar").show();
+            $(".toc-header").show();
+        }
+    }else {
+        $(".sidebar").show();
+        $(".toc-header").show();
+    }
+
+    $(".toc").css("display", "block");
+    if (typeof(Storage) !== "undefined") {
+        $(".sidebar").scrollTop(localStorage.sp);
+    }
+
+    $(".sidebar").css("overflow-y", "auto");
+
+    $(".toc_item").on("click", function() {
+        var page_id = $(this).attr("page_id");
+        // $(".selected_toc").removeClass("selected_toc");
+        // $(this).addClass("selected_toc");
+        page(page_id);
+
+    });
+
+    $(".menu-toggle").on("click", function() {
+        menuToggle();
+
+        if (typeof(Storage) !== "undefined") {
+            if(localStorage.sidebar == "hidden") {
+                localStorage.sidebar = "show";
+            }else {
+                localStorage.sidebar = "hidden";
+            }
+        }
+    });
+
+    
+
+    $("#load_content").show();
+});
+
+
+function menuToggle(no_sidebar) {
+    if(!no_sidebar) {
+        $(".sidebar").toggle();
+        $(".toc-header").toggle();
+    }
+    $("#load_content").toggleClass("col-sm-offset-3");
+    $("#load_content").toggleClass("col-sm-9");
+    $("#load_content").toggleClass("col-sm-12");
+    $("#load_content").toggleClass("sidebar-padding");
+    $(".prev_next_indicator").toggle();
+    $(".menu-group").toggle();
+}
+
+function page(no) {
+    var scrollpos = $(".sidebar").scrollTop();
+    if (typeof(Storage) !== "undefined") {
+        localStorage.sp = scrollpos;
+    }
+
+    location.href = "/"+no;
+    return false;
+
+    $(".selected_toc").removeClass("selected_toc");
+    $(".toc_item").each(function() {
+        var page_id = $(this).attr("page_id");
+        if(page_id == no) {
+            $(this).addClass("selected_toc");
+        }
+    });
+
+    var url = "/load/"+no;
+    $("#load_content").load(url, function(responseTxt, statusTxt, xhr){
+        if(statusTxt == "success") {
+            // alert("External content loaded successfully!");
+            $("#load_content").scrollTop(0);
+            window.history.pushState("object or string", "07-3 강력한 정규 표현식의 세계로", "/"+no);
+        }
+        if(statusTxt == "error") {
+            alert("Error: " + xhr.status + ": " + xhr.statusText);
+        }
+    });
+
+}
+</script>
