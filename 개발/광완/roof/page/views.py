@@ -9,7 +9,7 @@ class PageLV(ListView):
 
 class PageCaLV(ListView):
     template_name = 'page/member_category_list.html'
-    model = Post
+    model = Post 
 
 class PageDV(DetailView):
     template_name = 'page/member_post_detail.html'
