@@ -5,6 +5,7 @@ class Tag(models.Model):
     title = models.CharField('TITLE' ,max_length=10)
     slug = models.SlugField('SLUG', unique=True, allow_unicode=True, help_text='one word for title alias.')
     content = models.TextField('CONTENT')
+    
     def __str__(self):
         return self.title   
 
@@ -13,6 +14,7 @@ class Category(models.Model):
     title = models.CharField('TITLE' ,max_length=10)
     slug = models.SlugField('SLUG', unique=True, allow_unicode=True, help_text='one word for title alias.')
     content = models.TextField('CONTENT')
+    
     def __str__(self):
         return self.title    
 
@@ -21,6 +23,7 @@ class Member(models.Model):
     name = models.CharField('NAME' ,max_length=10)
     slug = models.SlugField('SLUG', unique=True, allow_unicode=True, help_text='one word for title alias.')    
     category_id = models.ManyToManyField('Category')
+    
     def __str__(self):
         return self.name  
 
@@ -38,12 +41,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def get_previous(self):
-        return self.get_previous_by_date()
-
-    def get_next(self):
-        return self.get_next_by_date()
-
 class Photo(models.Model):
     photo_id = models.AutoField('Photo ID', primary_key=True)
     title = models.CharField('TITLE' ,max_length=25)
@@ -54,9 +51,3 @@ class Photo(models.Model):
     content = models.TextField('CONTENT', null=True, blank=True)
     def __str__(self):
         return self.title
-    
-    def get_previous(self):
-        return self.get_previous_by_date()
-
-    def get_next(self):
-        return self.get_next_by_date()
