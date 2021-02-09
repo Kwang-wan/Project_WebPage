@@ -41,20 +41,22 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-                            <form class="d-flex" action="" method="post"> {% csrf_token %}
+                            <li>
+							<form class="d-flex" action="{% url 'page:search' %}" method="post"> {% csrf_token %}
                                 <input class="form-control me-2" style="margin-left:auto; margin-right:auto" type="search" placeholder="Search" aria-label="Search" name="search_word">
                             </form>
+							</li>
 							<li><a href="{% url 'home' %}">Home</a></li>                                        
-                            <li><a href="page/용현">용현</a></li>
-                            <li><a href="page/혜빈">혜빈</a></li>
-                            <li><a href="page/승은">승은</a></li>
-                            <li><a href="page/광완">광완</a></li>
+                            <li><a href="{% url 'page:member_list' '용현' %}">용현</a></li>
+                            <li><a href="{% url 'page:member_list' '혜빈' %}">혜빈</a></li>
+                            <li><a href="{% url 'page:member_list' '승은' %}">승은</a></li>
+                            <li><a href="{% url 'page:member_list' '광완' %}">광완</a></li>
 						</ul>
 					</nav>
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-                        {% block content %}{% endblock content %}
+                        	{% block content %}{% endblock content %}
 						</div>
 					</div>
 				<!-- Footer -->
