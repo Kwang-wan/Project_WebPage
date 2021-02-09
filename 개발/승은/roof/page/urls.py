@@ -24,5 +24,7 @@ urlpatterns = [
     #/category/game/
     re_path(r'^(?P<category>[-\w]+)/$', views.CaLV.as_view(), name='category_list'),
 
+    #/page/search/
+    re_path(r'^(?P<search>[-\w]+)/$', views.CaLV.as_view(), name='search'),
 ]
 
