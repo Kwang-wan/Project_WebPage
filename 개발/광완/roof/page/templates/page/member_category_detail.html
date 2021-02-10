@@ -12,18 +12,13 @@
 {% block content %}
 	<header>
 		<h1>{{ object }}'s {{ categoryname }}</h1>
-		<p>#
-		{% for photo in object.post_set.all %}
-			a
-			{{ photo }}
-		{% endfor %}
-		</p>
+		<p>#</p>
 	</header>
 	<section class="tiles">
 		{% for post in object.post_set.all %}
 		    <article class="style3">
 		    	<span class="image">
-		    		<img src="{% static 'images/pic08.jpg' %}" alt="" />
+		    		<img src="{{ post.image.thumb_url }}" alt="" />
 		    	</span>
 		    	<a href="{% url 'page:member_post_detail' object.slug categoryname post.slug %}">
 		    		<h2>{{ post }}</h2>

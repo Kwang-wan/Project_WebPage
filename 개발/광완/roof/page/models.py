@@ -32,6 +32,7 @@ class Post(models.Model):
     title = models.CharField('TITLE' ,max_length=25)
     slug = models.SlugField('SLUG', primary_key=True, allow_unicode=True, help_text='one word for title alias.')
     content = models.TextField('CONTENT', blank=True)
+    image = ThumbnailImageField(upload_to='photo/%Y/%m')
     date = models.DateTimeField('TIME', auto_now_add=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     member = models.ForeignKey('Member', on_delete=models.CASCADE)
