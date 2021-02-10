@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}member
+{% block title %}
 {% endblock %}
 
 {% block extra-style %}
@@ -10,22 +10,24 @@
 
 
 {% block content %}
-	<header>
-		<h1>{{ object.name }}</h1>
+    <header>
+		<h1>Category: {{ categoryname }}</h1>
 		<p>#</p>
 	</header>
 	<section class="tiles">
-		    <article class="style2">
+		{% for post in object.post_set.all %}
+		    <article class="style1">
 		    	<span class="image">
 		    		<img src="{% static 'images/pic01.jpg' %}" alt="" />
 		    	</span>
-		    	<a href="#">
-		    		<h2>#</h2>
+		    	<a href="{% url 'page:member_post_detail' post.member post.category post.slug %}">
+		    		<h2>{{ post.title }}</h2>
 			    	<div class="content">
 			    		<p>#</p>
 			    	</div>
 		    	</a>
 		    </article>
+		{% endfor %}
 	</section>
 {% endblock content %}
 

@@ -13,11 +13,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category_list')
+    list_display = ('name', 'content', 'category_list')
     prepopulated_fields = {'slug': ('name',)}
 
     def category_list(self, obj):
-        return ', '.join(o.title for o in obj.category.all())    
+        return ', '.join(o.title for o in obj.category.all()) 
 
 class PhotoInline(admin.StackedInline):
     model = Photo
@@ -34,5 +34,5 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'member', 'content')  
+    list_display = ('post', 'title', 'content')  
     prepopulated_fields = {'slug': ('title',)}
