@@ -12,7 +12,12 @@
 {% block content %}
 	<header>
 		<h1>{{ object }}'s {{ categoryname }}</h1>
-		<p>#</p>
+		<p>#
+		{% for photo in object.post_set.all %}
+			a
+			{{ photo }}
+		{% endfor %}
+		</p>
 	</header>
 	<section class="tiles">
 		{% for post in object.post_set.all %}

@@ -34,7 +34,14 @@ class PageDV(DetailView):
 
 class PagePhotoDV(DetailView):
     template_name = 'page/member_photo_detail.html'
-    model = Photo  
+    model = Photo
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['membername'] = self.kwargs['member_id']
+        context['categoryname'] = self.kwargs['category_id']
+        context['postname'] = self.kwargs['post_id']
+        return context 
 
 class TagDV(DetailView):
     template_name = 'tag/tag_detail.html'
