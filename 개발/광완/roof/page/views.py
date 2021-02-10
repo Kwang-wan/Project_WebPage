@@ -26,17 +26,33 @@ class PageDV(DetailView):
     template_name = 'page/member_post_detail.html'
     model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['membername'] = self.kwargs['member_id']
+        context['categoryname'] = self.kwargs['category_id']
+        return context
+
 class PagePhotoDV(DetailView):
     template_name = 'page/member_photo_detail.html'
     model = Photo  
 
-class TagLV(ListView):
-    template_name = 'tag/tag_list.html'
+class TagDV(DetailView):
+    template_name = 'tag/tag_detail.html'
     model = Tag
 
-class CaLV(ListView):
-    template_name = 'category/category_list.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tagname'] = self.kwargs['slug']
+        return context
+
+class CaDV(DetailView):
+    template_name = 'category/category_detail.html'
     model = Category
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categoryname'] = self.kwargs['slug']
+        return context
 
 #--- FormView
 class SearchFormView(FormView): 

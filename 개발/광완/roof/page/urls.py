@@ -19,10 +19,10 @@ urlpatterns = [
     re_path(r'^member/(?P<member_id>[-\w]+)/(?P<category_id>[-\w]+)/(?P<post_id>[-\w]+)/(?P<slug>[-\w]+)$', views.PagePhotoDV.as_view(), name='member_photo_detail'),
 
     #/page/tag/supermario/
-    re_path(r'^tag/(?P<slug>[-\w]+)/$', views.TagLV.as_view(), name='tag_list'),
+    re_path(r'^tag/(?P<slug>[-\w]+)/$', views.TagDV.as_view(), name='tag_detail'),
 
     #/page/category/game/
-    re_path(r'^category/(?P<slug>[-\w]+)/$', views.CaLV.as_view(), name='category_list'),
+    re_path(r'^category/(?P<slug>[-\w]+)/$', views.CaDV.as_view(), name='category_detail'),
 
     #/page/search/
     re_path(r'^search/$', views.SearchFormView.as_view(), name='search'),

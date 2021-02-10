@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %} tag_list.html
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    <section class="tiles">
+        {% for post in object.post_set.all %}
+            <article class="style1">
+                <span class="image">       
+                    <img src="{% static 'img/pic01.jpg' %}" alt="" />
+                </span>
+                <a href="{% url 'page:member_photo_detail'  object.slug categoryname post.slug photo.slug %}">
+                    <h2>{{tag.title}}</h2>
+                    <div class="content">
+                        <p>{{tag.title}}</p>
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+
+{% endblock content %}
+
