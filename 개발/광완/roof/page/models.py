@@ -21,7 +21,8 @@ class Category(models.Model):
 
 class Member(models.Model):
     name = models.CharField('NAME' ,max_length=10)
-    slug = models.SlugField('SLUG', primary_key=True, allow_unicode=True, help_text='one word for title alias.')    
+    slug = models.SlugField('SLUG', primary_key=True, allow_unicode=True, help_text='one word for title alias.')
+    content = models.TextField('CONTENT', blank=True)
     category = models.ManyToManyField('Category')
     
     def __str__(self):
@@ -44,7 +45,6 @@ class Photo(models.Model):
     title = models.CharField('TITLE' ,max_length=25)
     slug = models.SlugField('SLUG', primary_key=True, allow_unicode=True, help_text='one word for title alias.')
     image = ThumbnailImageField(upload_to='photo/%Y/%m')
-    member = models.ForeignKey('Member', on_delete=models.CASCADE)
     content = models.TextField('CONTENT', blank=True)
 
     def __str__(self):

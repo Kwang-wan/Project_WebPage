@@ -10,12 +10,17 @@ from django.db.models import Q
 from django.shortcuts import render
 
 class PageMemberDV(DetailView):
-    template_name = 'page/member_list.html'
+    template_name = 'page/member_detail.html'
     model = Member
 
-class PageCaLV(ListView):
-    template_name = 'page/member_category_list.html'
-    model = Post 
+class PageCategoryDV(DetailView):
+    template_name = 'page/member_category_detail.html'
+    model = Member
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categoryname'] = self.kwargs['category_id']
+        return context
 
 class PageDV(DetailView):
     template_name = 'page/member_post_detail.html'

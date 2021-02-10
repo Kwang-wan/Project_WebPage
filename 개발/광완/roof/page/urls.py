@@ -1,4 +1,4 @@
-from django.urls import re_path, path
+from django.urls import re_path
 from page import views
 
 
@@ -7,10 +7,10 @@ app_name = 'page'
 urlpatterns = [
 
     #/page/member/yonghyun/
-    re_path(r'^member/(?P<slug>[-\w]+)/$', views.PageMemberDV.as_view(), name='member_list'),
+    re_path(r'^member/(?P<slug>[-\w]+)/$', views.PageMemberDV.as_view(), name='member_detail'),
 
     #/page/member/yonghyun/game/
-    re_path(r'^member/(?P<member_id>[-\w]+)/(?P<category_id>[-\w]+)/$', views.PageCaLV.as_view(), name='member_category_list'),
+    re_path(r'^member/(?P<slug>[-\w]+)/(?P<category_id>[-\w]+)/$', views.PageCategoryDV.as_view(), name='member_category_detail'),
     
     #/page/member/yonghyun/game/game-title/
     re_path(r'^member/(?P<member_id>[-\w]+)/(?P<category_id>[-\w]+)/(?P<slug>[-\w]+)/$', views.PageDV.as_view(), name='member_post_detail'),    
