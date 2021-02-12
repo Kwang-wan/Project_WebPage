@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}post_search.html{% endblock %}
+{% block title %}search
+{% endblock %}
+
+{% block extra-style %}
+{% endblock extra-style %}
+
 
 {% block content %}
 
-    <h1>Blog Search</h1>
+    <h1>Page Search</h1>
     <br>
 
     <form action="." method="post"> {% csrf_token %}
@@ -16,13 +21,15 @@
 
     {% if object_list %}
         {% for post in object_list %}
-        <h2><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h2>
-        {{ post.date|date:"N d, Y" }}
-        <p>{{ post.content }}</p>
+        <h2><a href='#'>{{ post.title }}</a></h2>
         {% endfor %}
 
     {% elif search_term %}
     <b><i>Search Word({{ search_term }}) Not Found !</i></b>
     {% endif %}
 
+
+{% endblock content %}
+
+{% block jsfile %}
 {% endblock %}
