@@ -19,7 +19,7 @@
     <div class="carousel-inner">
       {% for photo in post.photo_set.all %}
         <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
-          <img src="{{ photo.image.url }} " class="card-img-top" >
+          <img src="{{ photo.image.url }} " class="card-img-top" style="height: 600px; background-color: #e0e0e0; object-fit:contain">
         </div>
       {% endfor %}
     </div>
@@ -37,8 +37,8 @@
 <section class="tiles">
 	{% for photo in post.photo_set.all %}
 	<article class="style1">
-		<span class="image">
-			<img src="{{ photo.image.url }}" alt="" />
+		<span class="image" style="height: 300px; background-color: #e0e0e0;">
+			<img src="{{ photo.image.url }}" alt="" style="height: 300px;"> 
 		</span>
 		<a href="{% url 'page:member_photo_detail' membername categoryname post.slug photo.slug %}">
 			<h2>{{ photo }}</h2>
