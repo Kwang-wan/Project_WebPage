@@ -12,30 +12,39 @@
 {% block content %}
 <head>
     <div class="container">
-        <div class="row">
-            <div class="col-5">
-                <img src="{% static 'img/annihilation.png' %}" height="200px" />
+        <style>	
+            .verticalLine {
+             border-left: thick solid #7e7a7a; padding-left:20px; position:absolute; left:50%;}
+        </style>
+            <div class="row">
+                <div class="col-6">
+                    <img src="{% static 'img/annihilation.png' %}" style="float:left; height:200px;" />
+                </div>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+            <div class="verticalLine">
+                <div class="col-6">
+                    <div class="content">
+                        <div class="inner">
+                            <header>
+                                <h2>슈퍼마리오 1-1 공략</h2>
+                                <p class="info">3 days ago by <a href="#">Jane Doe</a></p>
+                            </header>
+                            <p>두번째 배관에 꼭 들어가야 한다.</p>
+                        </div>	
+                    </div>
+                </div>
             </div>
-            <div class="col-7">
-                <textarea 
-                name="contents"
-                cols="50" 
-                wrap="hard"
-                style="overflow:hidden; 
-                width:83%;">
-                </textarea>
+            <hr>
+                <div class="col ml-15" style="padding-left: 30px;">
+                    <h6>슈퍼마리오 공략. 게임. </h6>
+                     <p class="info">3 days ago by <a href="#">Jane Doe</a></p>
+                             </header>
+                             <p></p>									
+             </div>
             </div>
-        <hr>
-        <div class="col ml-15" style="padding-left: 30px;">
-            <textarea 
-            cols="5" 
-            wrap="hard" 
-            name="contents" 
-            style="overflow:hidden; width:90%; padding:10px; border:none;">
-            </textarea>
-        </div>
         </div>
     </div>
+</div>
 </head>
 {% endblock content %}
 
