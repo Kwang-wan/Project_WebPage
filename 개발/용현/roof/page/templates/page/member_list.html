@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}
+{% block title %}member
 {% endblock %}
 
 {% block extra-style %}
@@ -10,6 +10,23 @@
 
 
 {% block content %}
+	<header>
+		<h1>{{ object.name }}</h1>
+		<p>#</p>
+	</header>
+	<section class="tiles">
+		    <article class="style2">
+		    	<span class="image">
+		    		<img src="{% static 'images/pic01.jpg' %}" alt="" />
+		    	</span>
+		    	<a href="#">
+		    		<h2>#</h2>
+			    	<div class="content">
+			    		<p>#</p>
+			    	</div>
+		    	</a>
+		    </article>
+	</section>
 {% endblock content %}
 
 {% block jsfile %}

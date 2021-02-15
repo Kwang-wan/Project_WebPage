@@ -10,7 +10,77 @@
 
 
 {% block content %}
-{% endblock content %}
 
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <ol class="carousel-indicators">
+    {% for photo in post.photo_set.all %}
+    <li data-bs-target="#carouselExampleDark" {% if forloop.counter == 1 %} active {% endif %}"></li>
+    {% endfor %}   
+  </ol>
+    <div class="carousel-inner">
+      {% for photo in post.photo_set.all %}
+        <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+          <img src="{{ photo.image.url }} " class="card-img-top" style=" height:550px; width:1300px;" >
+        </div>
+      {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+     <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+  
+
+<!-- Main -->
+<div id="main">
+	<div class="inner">
+		<header>
+		   </header>
+		    <section class="tiles">
+				<article class="style1">
+					<span class="image">
+            {% for photo in post.photo_set.all %}
+              <img src="{{ photo.image.url }} " class="card-img-mid" style=" height:100px; width:100px;">
+            {% endfor %}
+					</span>
+					<a href="generic.html">
+						<h2>{%for photo in post.photo_set.all %} 
+           			 <photo.title>{%endfor%} </h2>
+						<div class="content">
+							<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+						</div>
+					</a>
+				</article>
+                <article class="style2">
+					<span class="image">
+						<img src="{% static 'img/home.jpg' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>축구</h2>
+						<div class="content">
+							<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+						</div>
+					</a>
+				</article>
+                <article class="style3">
+					<span class="image">
+						<img src="{% static 'img/home.jpg' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>여행</h2>
+						<div class="content">
+							<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+						</div>
+					</a>
+				</article>                
+            </section>
+    </div>
+</div>  
+
+{% endblock content %}
 {% block jsfile %}
 {% endblock %}

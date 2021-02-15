@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}
+{% block title %} photo_detail
 {% endblock %}
 
 {% block extra-style %}
@@ -10,6 +10,44 @@
 
 
 {% block content %}
+<head>
+    <div class="container">
+        <style>	
+            .verticalLine {
+             border-left: thick solid #7e7a7a; padding-left:20px; position:absolute; left:50%;
+             height: 650px;}
+        </style>
+            <div class="row">
+                <div class="col-6">
+                    <img src="{{photo.image.url}}" style="float:left; height:650px; width:550px;" />
+                </div>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+            <div class="verticalLine">
+                <div class="col-6">
+                    <div class="content">
+                        <div class="inner">
+                            <header>
+                                <h2>{{photo.title}}</h2>
+                                <p class="info">3 days ago by <a href="#">Jane Doe</a></p>
+                            </header>
+                            <p>{{photo.content}}</p>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+            <hr>
+                <div class="col ml-15" style="padding-left: 30px;">
+                    <h6>{{post.tag}} </h6>
+
+                     <p class="info">3 days ago by <a href="#">Jane Doe</a></p>
+                             </header>
+                             <p></p>									
+             </div>
+            </div>
+        </div>
+    </div>
+</div>
+</head>
 {% endblock content %}
 
 {% block jsfile %}
