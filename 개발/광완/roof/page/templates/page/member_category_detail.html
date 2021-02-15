@@ -12,7 +12,6 @@
 {% block content %}
 	<header>
 		<h1>{{ object }}'s {{ categoryname }}</h1>
-		<p>#</p>
 	</header>
 	<section class="tiles">
 		{% for post in object.post_set.all %}
@@ -22,9 +21,6 @@
 		    	</span>
 		    	<a href="{% url 'page:member_post_detail' object.slug categoryname post.slug %}">
 		    		<h2>{{ post }}</h2>
-			    	<div class="content">
-			    		<p>#</p>
-			    	</div>
 		    	</a>
 		    </article>
 		{% endfor %}

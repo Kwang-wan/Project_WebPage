@@ -13,8 +13,8 @@
 {% block content %}
 
     <article id="one" class="post style1">
-        <div class="image">       
-            <img src="{{ photo.image.thumb_url }}" alt="" data-position="75% center" />
+        <div class="image" style="background-size: contain;">    
+            <img src="{{ photo.image.url }}" alt="" data-position="75% center"/>
         </div>
         <div class="content">
             <div class="inner">
@@ -22,7 +22,7 @@
                     <h3>{{ photo.title }}</h3>
                     <p class="info">{{ photo.post.date }} by <a href="{% url 'page:member_detail' membername %}">{{ photo.post.member }}</a></p>
                 </header>
-                <p>{{ photo.content }}</p>
+                    <p style="overflow:auto; height:200px;">{{ photo.content }}</p>
             </div>
             <div class="col ml-15" style="padding-left: 30px;">
                 <h6>category: <a href="{% url 'page:category_detail' categoryname %}">{{ photo.post.category }}</a></h6>
