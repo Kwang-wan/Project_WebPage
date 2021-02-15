@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}member|category
+{% endblock %}
+
+{% block extra-style %}
+{% endblock extra-style %}
+
+
+{% block content %}
+	<header>
+		<h1>{{ object }}'s {{ categoryname }}</h1>
+		<p>#</p>
+	</header>
+	<section class="tiles">
+		{% for post in object.post_set.all %}
+		    <article class="style3">
+		    	<span class="image">
+		    		<img src="{{ post.image.thumb_url }}" alt="" />
+		    	</span>
+		    	<a href="{% url 'page:member_post_detail' object.slug categoryname post.slug %}">
+		    		<h2>{{ post }}</h2>
+			    	<div class="content">
+			    		<p>#</p>
+			    	</div>
+		    	</a>
+		    </article>
+		{% endfor %}
+	</section>
+{% endblock content %}
+
+{% block jsfile %}
+{% endblock %}
